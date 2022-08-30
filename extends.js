@@ -1,12 +1,20 @@
-//syntactic sugar
-class Instructor {
+class TeamMember {
   name;
-  designation = "Web Course Instructor";
-  team = "Web Team";
   location;
   constructor(name, location) {
     this.name = name;
     this.location = location;
+  }
+  provideFeedback() {
+    console.log(`${this.name} thank you for your feedback.`);
+  }
+}
+
+class Instructor extends TeamMember {
+  designation = "Web Course Instructor";
+  team = "Web Team";
+  constructor(name, location) {
+    super(name, location);
   }
   startSupportSession(time) {
     console.log(`Start the Support Session at ${time}`);
@@ -14,29 +22,24 @@ class Instructor {
   createQuiz(module) {
     console.log(`Please create quiz for ${module}`);
   }
-  provideFeedback() {
-    console.log(`${this.time} thank you for your feedback.`);
-  }
 }
 
-class Developer {
-  name;
+class Developer extends TeamMember {
   designation = "Web Course Instructor";
   team = "Web Team";
-  location;
   tech;
   constructor(name, location, tech) {
-    this.name = name;
-    this.location = location;
+    super(name, location);
     this.tech = tech;
   }
   developFeature(feature) {
     console.log(`Please develop the ${feature}`);
   }
-  createQuiz(module) {
-    console.log(`Please create quiz for ${module}`);
-  }
-  provideFeedback() {
-    console.log(`${this.time} thank you for your feedback.`);
+  release(version) {
+    console.log(`Please release the ${version}`);
   }
 }
+
+const alia=new Developer('Alia','India','React');
+console.log(alia);
+alia.provideFeedback();
